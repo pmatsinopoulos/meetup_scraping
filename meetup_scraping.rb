@@ -46,7 +46,7 @@ while current < @app.members.number_of_members - 1 # -1 to exclude ourselves fro
 
   unless message_to_send.empty?
     @app.send_message_page.body.set message_to_send
-    # @app.send_message_page.send_button.click
+    @app.send_message_page.send_button.click
 
     sleep(1)
   end
