@@ -41,14 +41,13 @@ while current < @app.members.number_of_members - 1 # -1 to exclude ourselves fro
   @app.members.message_links.each do |message_link|
     message_link.click
     current += 1
-    sleep(1)
-  end
 
-  unless message_to_send.empty?
-    @app.send_message_page.body.set message_to_send
-    @app.send_message_page.send_button.click
+    unless message_to_send.empty?
+      @app.send_message_page.body.set message_to_send
+      @app.send_message_page.send_button.click
 
-    sleep(1)
+      sleep(2)
+    end
   end
 
   offset += paging
