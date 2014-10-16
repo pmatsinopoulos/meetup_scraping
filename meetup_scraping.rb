@@ -14,11 +14,12 @@ require 'page_objects/pages/logout_page'
 require 'page_objects/pages/send_message_page'
 require 'page_objects/application'
 
-
 email_address   = ARGV[0].chomp
 password        = ARGV[1].chomp
 meetup_name     = ARGV[2].chomp
 message_to_send = ARGV[3].chomp
+
+# Starting the scraping
 
 @app = PageObjects::Application.new
 @app.meetup.load
@@ -36,7 +37,7 @@ paging = 20
 
 current = 0
 
-while current < @app.members.number_of_members - 1 # -1 to exclude ourselves from member list
+while current < @app.members.number_of_members - 1 # -1 to exclude our account from member list
 
   @app.members.message_links.each do |message_link|
     message_link.click
@@ -58,4 +59,4 @@ end
 
 @app.logout
 
-sleep(10)
+sleep(5)
